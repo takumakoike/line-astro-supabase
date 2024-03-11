@@ -1,40 +1,14 @@
 ---
 import Base from "../Layouts/Base.astro"
-import { supabase } from '../db/supabase';
-const { data } = await supabase.from("userInformation").select();
+// import { supabase } from '../db/supabase';
+// const { data } = await supabase.from("userInformation").select();
 
-
-let code;
-// LINEログイン
-const client_id = process.env.LINE_CLIENT_ID;
-const redirect_url = "https://line-astro-supabase.vercel.app/dashboard";
-// const redirect_url = "https://takuma-biz.net/bearnet";
-
-const login_url = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${client_id}&redirect_uri=${redirect_url}&state=12345abcde&scope=profile%20openid&nonce=09876xyz`
 ---
 
 <Base>
 	<h1 class="font-bold text-2xl mt-10">LINEログイン</h1>
 	<p>現在はログインしていません。<br>ログインすると↓にメッセージが表示されます</p>
 	
-	{code != "" ? 
-		<p>まだログインしていません</p>
-		<a href={login_url} class="flex bg-green-400 p-2 justify-center">LINEでログインしてみる</a>
-	:
-		<p>LINEでログインしています！おめでとう！</p>
-
-
-		<form action="../ts/userinfo">
-			<h2>自分の情報を取得する</h2>
-			<button id="getInfo">GET!</button>
-		</form>
-	}
-
-	{
-		<ul>
-			{data && data.map((item) => (
-				<li>{item.name}</li>
-			))}
-		</ul>
-	}
+	<button id="getInfo">GET!</button>
+	<script src="../js/login.js"></script>
 </Base>
