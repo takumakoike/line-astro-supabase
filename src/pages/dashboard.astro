@@ -3,7 +3,7 @@ import Base from "../Layouts/Base.astro"
 ---
 
 <Base>
-    <form action="../ts/userinfo" method="post" class="">
+    <form action="/ts/userinfo" method="post" class="">
         <div class="name">
             <label for="userName">名前
                 <input type="text" id="userName" class="p-1 border-2">
@@ -14,6 +14,6 @@ import Base from "../Layouts/Base.astro"
                 <input type="text" class="p-1 border-2">
             </label>
         </div>
-        <button type="submit">データベース挿入</button>
+        <button type="submit" class="bg-blue-400">データベース挿入</button>
     </form>
 </Base>
